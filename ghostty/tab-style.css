@@ -1,0 +1,38 @@
+/*
+debug: env GTK_DEBUG=interactive ghostty
+https://docs.gtk.org/gtk4/css-overview.html
+https://docs.gtk.org/gtk4/css-properties.html
+*/
+
+* {
+  font-family: "JetBrains Mono";
+  font-size: 14px;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+tabbar {
+  min-height: 0;
+  background: #221a22;
+}
+
+tabbox {
+  min-height: 0;
+}
+
+tabbox tab {
+  color: #7e706c;
+}
+
+tabbox tab:selected {
+  background: #3f303f;
+}
+
+tabbox tab:selected label {
+  color: #A98D92;
+}
+
+tabbox tab label {
+  color: #7e706c;
+}

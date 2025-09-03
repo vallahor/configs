@@ -1,0 +1,56 @@
+# Behavior
+# mouse-hide-while-typing = true
+# confirm-close-surface = false
+# clipboard-read = "allow"
+# clipboard-paste-protection = false
+
+font-family = "JetBrains Mono"
+font-size = 11
+font-thicken = true
+
+keybind = ctrl+,=unbind
+keybind = ctrl+d=unbind
+keybind = ctrl+shift+semicolon=reload_config
+keybind = alt+home=previous_tab
+keybind = alt+end=next_tab
+keybind = alt+shift+home=move_tab:-1
+keybind = alt+shift+end=move_tab:1
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+w=close_tab
+
+keybind = ctrl+|=new_split:right
+keybind = ctrl+_=new_split:down
+keybind = ctrl+shift+q=close_window
+
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+backspace=text:\x17
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+window-padding-balance = true
+
+gtk-titlebar = false
+# gtk-adwaita = false
+gtk-wide-tabs = false
+gtk-custom-css = tab-style.css
+
+# Window
+window-theme = "dark"
+window-decoration = true
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
+window-inherit-font-size = true
+window-vsync = true
+
+background = #121112
+foreground = #A98D92
+cursor-color = #A98D92
+cursor-text = #222022
+selection-background = #471A37
+selection-foreground = #121112
+
