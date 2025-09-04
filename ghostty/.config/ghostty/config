@@ -45,7 +45,6 @@ window-padding-y = 0
 window-padding-balance = true
 window-padding-color = extend
 window-inherit-font-size = true
-window-vsync = true
 
 background = #121112
 foreground = #A98D92
