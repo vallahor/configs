@@ -4,6 +4,8 @@
 # clipboard-read = "allow"
 # clipboard-paste-protection = false
 
+command = /usr/bin/nu
+
 font-family = "JetBrains Mono"
 font-size = 11
 font-thicken = true
