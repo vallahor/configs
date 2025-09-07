@@ -12,6 +12,7 @@ font-thicken = true
 
 keybind = ctrl+,=unbind
 keybind = ctrl+d=unbind
+keybind = ctrl+enter=unbind
 keybind = ctrl+shift+semicolon=reload_config
 keybind = alt+home=previous_tab
 keybind = alt+end=next_tab
