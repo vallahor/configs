@@ -81,3 +81,52 @@ let asdf_data_dir = (
     $env.ASDF_DATA_DIR
   }
 )
+
+
+# Abbreviate home path
+def home_abbrev [os] {
+    let is_home_in_path = ($env.PWD | str starts-with $nu.home-path)
+    if ($is_home_in_path == true) {
+        if ($os == "windows") {
+            let home = ($nu.home-path | str replace -ar '\\' '/')
+            let pwd = ($env.PWD | str replace -ar '\\' '/')
+            $pwd | str replace $home '~'
+        } else {
+            $env.PWD | str replace $nu.home-path '~'
+        }
+    } else {
+        $env.PWD | str replace -ar '\\' '/'
+    }
+}
+
+# Get the current directory with home abbreviated
+def current_dir_style [] {
+    let current_dir = ($env.PWD)
+
+    let current_dir_abbreviated = if $current_dir == $nu.home-path {
+        '~'
+    } else {
+        let current_dir_relative_to_home = (
+            do --ignore-errors { $current_dir | path relative-to $nu.home-path } | str join
+        )
+
+        if ($current_dir_relative_to_home | is-empty) == false {
+            $'~(char separator)($current_dir_relative_to_home)'
+        } else {
+            $current_dir
+        }
+    }
+
+    $current_dir_abbreviated
+}
+
+def get_branch_name [gs] {
+  let br = ($gs | get branch)
+  if $br == "no_branch" {
+    ""
+  } else {
+    $"($br) "
+  }
+}
+
+$env.PROMPT_COMMAND = { $"(current_dir_style) (gstat | get_branch_name $in)" }
