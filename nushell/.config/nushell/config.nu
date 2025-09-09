@@ -58,22 +58,23 @@ $env.config.keybindings ++= [{
 }]
 
 
-# DOTNET CONFIG
-let dotnet_path = ^asdf which dotnet
-$env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
-$env.DOTNET_VERSION = ^dotnet --version
-$env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
-$env.DOTNET_CLI_TELEMETRY_OPTOUT=1
-
 use std/util "path add"
 path add "~/.local/bin"
-path add $env.DOTNET_ROOT
 
 
 path add ($env.HOME | path join "go" "bin")
 path add ($env.HOME | path join ".cargo" "bin")
 path add ($env.HOME | path join ".bun" "bin")
 path add ($env.HOME | path join ".config" "herd-lite" "bin")
+
+# DOTNET CONFIG
+let dotnet_path = ^asdf which dotnet
+$env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
+$env.DOTNET_VERSION = ^asdf dotnet --version
+$env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
+$env.DOTNET_CLI_TELEMETRY_OPTOUT = 1
+path add $env.DOTNET_ROOT
+
 
 let shims_dir = (
   if ( $env | get -o ASDF_DATA_DIR | is-empty ) {
