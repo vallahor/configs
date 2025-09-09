@@ -57,8 +57,18 @@ $env.config.keybindings ++= [{
     event: { edit: deleteword }
 }]
 
+
+# DOTNET CONFIG
+let dotnet_path = ^asdf which dotnet
+$env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
+$env.DOTNET_VERSION = ^dotnet --version
+$env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
+$env.DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 use std/util "path add"
 path add "~/.local/bin"
+path add $env.DOTNET_ROOT
+
 
 path add ($env.HOME | path join "go" "bin")
 path add ($env.HOME | path join ".cargo" "bin")
@@ -82,8 +92,6 @@ let asdf_data_dir = (
   }
 )
 
-
-# Abbreviate home path
 def home_abbrev [os] {
     let is_home_in_path = ($env.PWD | str starts-with $nu.home-path)
     if ($is_home_in_path == true) {
