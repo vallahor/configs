@@ -14,12 +14,26 @@ keybind = ctrl+,=unbind
 keybind = ctrl+d=unbind
 keybind = ctrl+enter=unbind
 keybind = ctrl+shift+semicolon=reload_config
-keybind = alt+home=previous_tab
-keybind = alt+end=next_tab
-keybind = alt+shift+home=move_tab:-1
-keybind = alt+shift+end=move_tab:1
+
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+w=close_tab
+
+keybind = alt+home=previous_tab
+keybind = alt+end=next_tab
+
+keybind = alt+shift+home=move_tab:-1
+keybind = alt+shift+end=move_tab:1
+
+keybind = alt+1=goto_tab:1
+keybind = alt+2=goto_tab:2
+keybind = alt+3=goto_tab:3
+keybind = alt+4=goto_tab:4
+keybind = alt+5=goto_tab:5
+keybind = alt+6=goto_tab:6
+keybind = alt+7=goto_tab:7
+keybind = alt+8=goto_tab:8
+keybind = alt+9=goto_tab:9
+keybind = alt+10=goto_tab:10
 
 keybind = ctrl+|=new_split:right
 keybind = ctrl+_=new_split:down
