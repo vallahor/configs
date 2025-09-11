@@ -58,25 +58,6 @@ $env.config.keybindings ++= [{
     event: { edit: deleteword }
 }]
 
-
-use std/util "path add"
-path add "~/.local/bin"
-
-
-path add ($env.HOME | path join "go" "bin")
-path add ($env.HOME | path join ".cargo" "bin")
-path add ($env.HOME | path join ".bun" "bin")
-path add ($env.HOME | path join ".config" "herd-lite" "bin")
-
-# DOTNET CONFIG
-let dotnet_path = ^asdf which dotnet
-$env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
-$env.DOTNET_VERSION = ^asdf dotnet --version
-$env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
-$env.DOTNET_CLI_TELEMETRY_OPTOUT = 1
-path add $env.DOTNET_ROOT
-
-
 let shims_dir = (
   if ( $env | get -o ASDF_DATA_DIR | is-empty ) {
     $env.HOME | path join '.asdf'
@@ -93,6 +74,29 @@ let asdf_data_dir = (
     $env.ASDF_DATA_DIR
   }
 )
+
+use std/util "path add"
+path add "~/.local/bin"
+
+
+path add ($env.HOME | path join "go/bin")
+path add ($env.HOME | path join ".config/herd-lite/bin")
+
+let rust_path = ^asdf where rust nightly
+let bun_path = ^asdf where bun
+path add ($env.HOME | path join $bun_path "bin")
+path add ($env.HOME | path join $rust_path "bin")
+plugin add ($env.HOME | path join $rust_path "bin/nu_plugin_gstat")
+
+# DOTNET CONFIG
+let dotnet_path = ^asdf which dotnet
+$env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
+$env.DOTNET_VERSION = ^asdf dotnet --version
+$env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
+$env.DOTNET_CLI_TELEMETRY_OPTOUT = 1
+path add $env.DOTNET_ROOT
+
+
 
 def home_abbrev [os] {
     let is_home_in_path = ($env.PWD | str starts-with $nu.home-path)
