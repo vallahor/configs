@@ -33,7 +33,7 @@ keybind = alt+6=goto_tab:6
 keybind = alt+7=goto_tab:7
 keybind = alt+8=goto_tab:8
 keybind = alt+9=goto_tab:9
-keybind = alt+10=goto_tab:10
+keybind = alt+0=goto_tab:0
 
 keybind = ctrl+|=new_split:right
 keybind = ctrl+_=new_split:down
