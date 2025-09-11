@@ -25,6 +25,7 @@ alias cdconf = cd ~/projects/configs
 alias vi = nvim
 alias vim = nvim
 alias python3 = python
+alias art = php artisan
 
 $env.config.show_banner = false
 
