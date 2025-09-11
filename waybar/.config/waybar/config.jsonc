@@ -30,13 +30,13 @@
     // Modules
     // -------------------------------------------------------------------------
     "clock#time": {
-        "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "interval": 60,
+        "format": "{:%H:%M}",
         "tooltip": false
     },
     "clock#date": {
-        "interval": 10,
-        "format": "{:%e %b %Y}", // Icon: calendar-alt
+        "interval": 1,
+        "format": "{:%e %b}", // Icon: calendar-alt
         "tooltip-format": "{:%e %B %Y}"
     },
     "cpu": {
