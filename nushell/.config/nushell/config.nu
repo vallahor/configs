@@ -145,3 +145,11 @@ def get_branch_name [gs] {
 $env.PROMPT_COMMAND = { $"(current_dir_style) (gstat | get_branch_name $in)" }
 $env.PROMPT_COMMAND_RIGHT = {||}
 $env.PROMPT_MULTILINE_INDICATOR = {||}
+
+# Utils
+
+def asdf_update [plugin version] {
+  asdf plugin update $plugin
+  asdf uninstall $plugin $version
+  asdf install $plugin $version
+}
