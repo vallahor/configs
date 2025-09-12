@@ -7,7 +7,7 @@
 # (or import) custom commands, or run any other startup tasks.
 # See https://www.nushell.sh/book/configuration.html
 #
-# Nushell sets "sensible defaults" for most configuration settings, 
+# Nushell sets "sensible defaults" for most configuration settings,
 # so your `config.nu` only needs to override these defaults if desired.
 #
 # You can open this file in your default editor using:
@@ -76,10 +76,9 @@ let asdf_data_dir = (
 )
 
 use std/util "path add"
-path add "~/.local/bin"
-
-
 path add ($env.HOME | path join "go/bin")
+path add ($env.HOME | path join ".local/bin")
+path add ($env.HOME | path join ".cargo/bin")
 path add ($env.HOME | path join ".config/herd-lite/bin")
 
 let rust_path = ^asdf where rust nightly
@@ -144,3 +143,5 @@ def get_branch_name [gs] {
 }
 
 $env.PROMPT_COMMAND = { $"(current_dir_style) (gstat | get_branch_name $in)" }
+$env.PROMPT_COMMAND_RIGHT = {||}
+$env.PROMPT_MULTILINE_INDICATOR = {||}
