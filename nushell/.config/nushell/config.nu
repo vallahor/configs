@@ -153,3 +153,4 @@ def asdf_update [plugin version] {
   asdf uninstall $plugin $version
   asdf install $plugin $version
 }
+source $"($nu.home-path)/.cargo/env.nu"
