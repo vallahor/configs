@@ -190,6 +190,14 @@
   background-color: #3f303f;
 }
 
+#workspaces button:hover {
+    color: #A98D92;
+    box-shadow: none;
+    background: #413D41;
+    animation: none;
+    transition: none;
+}
+
 #workspaces button.urgent {
   border-color: #c9545d;
   color: #c9545d;
