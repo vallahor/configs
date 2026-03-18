@@ -42,6 +42,15 @@ $env.config.keybindings ++= [{
 }]
 
 $env.config.keybindings ++= [{
+    name: delete_one_word_backward
+    modifier: control
+    keycode: char_h
+    mode: [emacs vi_insert]
+    event: {edit: backspaceword}
+}]
+
+
+$env.config.keybindings ++= [{
     name: complete
     modifier: none
     keycode: tab
