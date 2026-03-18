@@ -153,10 +153,36 @@ $env.PROMPT_COMMAND_RIGHT = {||}
 $env.PROMPT_MULTILINE_INDICATOR = {||}
 
 # Utils
+let asdf_plugins = [
+  { name: "bun", version: "latest" }
+  { name: "lazygit", version: "latest" }
+  { name: "neovim", version: "nightly" }
+  { name: "nodejs", version: "latest" }
+  { name: "python", version: "latest" }
+  { name: "ripgrep", version: "latest" }
+  { name: "rust", version: "nightly" }
+  { name: "tree-sitter", version: "latest" }
+  { name: "zig", version: "latest" }
+]
 
 def asdf_update [plugin version] {
   asdf plugin update $plugin
-  asdf uninstall $plugin $version
+  if $version != "latest" and $version != "nightly" {
+    asdf uninstall $plugin $version
+  }
   asdf install $plugin $version
+  asdf set $plugin $version -u
+}
+
+def asdf_update_all_plugins [] {
+  $asdf_plugins | each { |plugin|
+    asdf_update $plugin.name $plugin.version
+  } | ignore
+}
+
+def asdf_ensure_all_plugins [] {
+  $asdf_plugins | each { |plugin|
+    asdf plugin add $plugin.name
+  } | ignore
 }
 #source $"($nu.home-dir)/.cargo/env.nu"
