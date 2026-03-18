@@ -22,12 +22,16 @@ alias stow = stow -t ~
 alias cdvi = cd ~/.config/nvim/
 alias cdproj = cd ~/projects/
 alias cdconf = cd ~/projects/configs
+alias cddot = cd ~/.dotfiles
 alias vi = nvim
 alias vim = nvim
 alias python3 = python
 alias art = php artisan
 
 $env.config.show_banner = false
+
+$env.DISPLAY = ":0"
+$env.WLR_NO_HARDWARE_CURSORS = 1
 
 $env.config.keybindings ++= [{
     name: delete_one_word_backward
@@ -75,6 +79,8 @@ let asdf_data_dir = (
   }
 )
 
+
+
 use std/util "path add"
 path add ($env.HOME | path join "go/bin")
 path add ($env.HOME | path join ".local/bin")
@@ -88,12 +94,12 @@ path add ($env.HOME | path join $rust_path "bin")
 plugin add ($env.HOME | path join $rust_path "bin/nu_plugin_gstat")
 
 # DOTNET CONFIG
-let dotnet_path = ^asdf which dotnet
-$env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
-$env.DOTNET_VERSION = ^asdf dotnet --version
-$env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
-$env.DOTNET_CLI_TELEMETRY_OPTOUT = 1
-path add $env.DOTNET_ROOT
+# let dotnet_path = ^asdf which dotnet
+# $env.DOTNET_ROOT = $dotnet_path | path expand  | path dirname
+# $env.DOTNET_VERSION = ^asdf dotnet --version
+# $env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
+# $env.DOTNET_CLI_TELEMETRY_OPTOUT = 1
+# path add $env.DOTNET_ROOT
 
 
 
@@ -116,11 +122,11 @@ def home_abbrev [os] {
 def current_dir_style [] {
     let current_dir = ($env.PWD)
 
-    let current_dir_abbreviated = if $current_dir == $nu.home-path {
+    let current_dir_abbreviated = if $current_dir == $nu.home-dir {
         '~'
     } else {
         let current_dir_relative_to_home = (
-            do --ignore-errors { $current_dir | path relative-to $nu.home-path } | str join
+            do --ignore-errors { $current_dir | path relative-to $nu.home-dir } | str join
         )
 
         if ($current_dir_relative_to_home | is-empty) == false {
@@ -153,4 +159,4 @@ def asdf_update [plugin version] {
   asdf uninstall $plugin $version
   asdf install $plugin $version
 }
-source $"($nu.home-path)/.cargo/env.nu"
+#source $"($nu.home-dir)/.cargo/env.nu"
