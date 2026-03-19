@@ -21,6 +21,7 @@ alias stow = stow -t ~
 alias cdvi = cd ~/.config/nvim/
 alias cdproj = cd ~/projects/
 alias nuconf = nvim ~/.dotfiles/nushell/.config/nushell/config.nu
+alias hconf = nvim ~/.dotfiles/hypr/.config/hypr/hyprland.conf
 alias gconf = nvim ~/.dotfiles/ghostty/.config/ghostty/config
 alias wconf = nvim ~/.dotfiles/waybar/.config/waybar/config.jsonc
 alias cddot = cd ~/.dotfiles
