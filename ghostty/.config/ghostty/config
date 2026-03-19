@@ -7,11 +7,13 @@
 command = /usr/bin/nu
 
 font-family = "JetBrains Mono"
-font-size = 11
+font-size = 12
 font-thicken = true
 
 keybind = ctrl+,=unbind
 keybind = ctrl+d=unbind
+keybind = ctrl+==unbind
+keybind = ctrl+-=unbind
 keybind = ctrl+enter=unbind
 keybind = ctrl+shift+semicolon=reload_config
 
@@ -20,6 +22,9 @@ keybind = ctrl+shift+w=close_tab
 
 keybind = alt+home=previous_tab
 keybind = alt+end=next_tab
+
+keybind = alt+f8=decrease_font_size:1
+keybind = alt+f9=increase_font_size:1
 
 keybind = alt+shift+home=move_tab:-1
 keybind = alt+shift+end=move_tab:1
@@ -39,10 +44,10 @@ keybind = ctrl+|=new_split:right
 keybind = ctrl+_=new_split:down
 keybind = ctrl+shift+q=close_window
 
-keybind = alt+h=goto_split:left
-keybind = alt+l=goto_split:right
-keybind = alt+k=goto_split:up
-keybind = alt+j=goto_split:down
+keybind = alt+left=goto_split:left
+keybind = alt+right=goto_split:right
+keybind = alt+up=goto_split:up
+keybind = alt+down=goto_split:down
 #keybind = ctrl+backspace=text:\x17
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
@@ -50,8 +55,7 @@ keybind = global:ctrl+grave_accent=toggle_quick_terminal
 window-vsync = true
 
 gtk-titlebar = false
-# gtk-adwaita = false
-gtk-wide-tabs = false
+gtk-wide-tabs = true
 gtk-custom-css = tab-style.css
 
 # Window
@@ -64,7 +68,8 @@ window-padding-color = extend
 window-inherit-font-size = true
 
 # adjust-cell-height = 3
-adjust-cell-height = +15%
+# adjust-cell-height = +15%
+adjust-cell-height = +20%
 
 background = #121112
 foreground = #A98D92
