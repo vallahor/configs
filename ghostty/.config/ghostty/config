@@ -23,6 +23,7 @@ keybind = ctrl+shift+w=close_tab
 keybind = alt+home=previous_tab
 keybind = alt+end=next_tab
 
+keybind = alt+f7=reset_font_size
 keybind = alt+f8=decrease_font_size:1
 keybind = alt+f9=increase_font_size:1
 
