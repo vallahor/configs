@@ -17,11 +17,10 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-
 alias stow = stow -t ~
 alias cdvi = cd ~/.config/nvim/
 alias cdproj = cd ~/projects/
-alias cdconf = cd ~/projects/configs
+alias nuconf = nvim ~/.dotfiles/nushell/.config/nushell/config.nu
 alias cddot = cd ~/.dotfiles
 alias vi = nvim
 alias vim = nvim
@@ -48,7 +47,6 @@ $env.config.keybindings ++= [{
     mode: [emacs vi_insert]
     event: {edit: backspaceword}
 }]
-
 
 $env.config.keybindings ++= [{
     name: complete
@@ -88,8 +86,6 @@ let asdf_data_dir = (
   }
 )
 
-
-
 use std/util "path add"
 path add ($env.HOME | path join "go/bin")
 path add ($env.HOME | path join ".local/bin")
@@ -109,8 +105,6 @@ plugin add ($env.HOME | path join $rust_path "bin/nu_plugin_gstat")
 # $env.MSBuildSDKsPath = $"($env.DOTNET_ROOT)/sdk/($env.DOTNET_VERSION)/Sdks"
 # $env.DOTNET_CLI_TELEMETRY_OPTOUT = 1
 # path add $env.DOTNET_ROOT
-
-
 
 def home_abbrev [os] {
     let is_home_in_path = ($env.PWD | str starts-with $nu.home-path)
@@ -172,13 +166,11 @@ let asdf_plugins = [
   { name: "rust", version: "nightly" }
   { name: "tree-sitter", version: "latest" }
   { name: "zig", version: "latest" }
+  { name: "php", version: "latest" }
 ]
 
 def asdf_update [plugin version] {
   asdf plugin update $plugin
-  if $version != "latest" and $version != "nightly" {
-    asdf uninstall $plugin $version
-  }
   asdf install $plugin $version
   asdf set $plugin $version -u
 }
@@ -194,4 +186,3 @@ def asdf_ensure_all_plugins [] {
     asdf plugin add $plugin.name
   } | ignore
 }
-#source $"($nu.home-dir)/.cargo/env.nu"
