@@ -202,3 +202,6 @@ def asdf_ensure_all_plugins [] {
   } | ignore
 }
 
+def --env startup [] {
+    sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+}
