@@ -21,6 +21,8 @@ alias stow = stow -t ~
 alias cdvi = cd ~/.config/nvim/
 alias cdproj = cd ~/projects/
 alias nuconf = nvim ~/.dotfiles/nushell/.config/nushell/config.nu
+alias gconf = nvim ~/.dotfiles/ghostty/.config/ghostty/config
+alias wconf = nvim ~/.dotfiles/waybar/.config/waybar/config.jsonc
 alias cddot = cd ~/.dotfiles
 alias vi = nvim
 alias vim = nvim
@@ -67,6 +69,18 @@ $env.config.keybindings ++= [{
     keycode: delete
     mode: [emacs vi_insert]
     event: { edit: deleteword }
+}]
+
+# https://github.com/nushell/nushell/issues/11555#issuecomment-2276245491
+$env.config.keybindings ++= [ {
+    name: 'eval'
+    modifier: alt
+    keycode: f5
+    mode: [emacs vi_normal vi_insert]
+    event: {
+      send: executehostcommand,
+      cmd: $"source '($nu.env-path)'; source '($nu.config-path)'"
+    }
 }]
 
 let shims_dir = (
@@ -186,3 +200,4 @@ def asdf_ensure_all_plugins [] {
     asdf plugin add $plugin.name
   } | ignore
 }
+
