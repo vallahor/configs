@@ -35,6 +35,7 @@ $env.config.show_banner = false
 $env.DISPLAY = ":0"
 $env.WLR_NO_HARDWARE_CURSORS = 1
 
+
 $env.config.keybindings ++= [{
     name: delete_one_word_backward
     modifier: control
@@ -204,4 +205,10 @@ def asdf_ensure_all_plugins [] {
 
 def --env startup [] {
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+}
+
+def composer_laravel_ide_helper [] {
+  composer require --dev barryvdh/laravel-ide-helper
+  php artisan ide-helper:generate
+  php artisan ide-helper:models -RW
 }
