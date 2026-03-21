@@ -32,9 +32,9 @@ alias art = php artisan
 
 $env.config.show_banner = false
 
-$env.DISPLAY = ":0"
+$env.DISPLAY = ":1"
 $env.WLR_NO_HARDWARE_CURSORS = 1
-
+$env.QT_QPA_PLATFORM = "xcb"
 
 $env.config.keybindings ++= [{
     name: delete_one_word_backward
@@ -105,14 +105,21 @@ let asdf_data_dir = (
 use std/util "path add"
 path add ($env.HOME | path join "go/bin")
 path add ($env.HOME | path join ".local/bin")
-path add ($env.HOME | path join ".cargo/bin")
-path add ($env.HOME | path join ".config/herd-lite/bin")
 
-let rust_path = ^asdf where rust nightly
-let bun_path = ^asdf where bun
-path add ($env.HOME | path join $bun_path "bin")
-path add ($env.HOME | path join $rust_path "bin")
-plugin add ($env.HOME | path join $rust_path "bin/nu_plugin_gstat")
+let rust_path = (^asdf where rust nightly | str trim )
+let bun_path = (^asdf where bun | str trim )
+let php_path = (^asdf where php | str trim )
+
+path add ($bun_path | path join "bin")
+path add ($rust_path | path join "bin")
+path add ($php_path | path join ".composer/vendor/bin")
+plugin add ($rust_path | path join "bin/nu_plugin_gstat")
+
+$env.ANDROID_SDK_ROOT = "/opt/android-sdk"
+$env.ANDROID_HOME = $env.ANDROID_SDK_ROOT
+$env.PATH = ($env.PATH | append "$env.ANDROID_SDK_ROOT/platform-tools")
+$env.PATH = ($env.PATH | append "$env.ANDROID_SDK_ROOT/emulator")
+$env.PATH = ($env.PATH | append "$env.ANDROID_SDK_ROOT/cmdline-tools/latest/bin")
 
 # DOTNET CONFIG
 # let dotnet_path = ^asdf which dotnet
